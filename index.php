@@ -51,11 +51,9 @@ require 'config.php';
                 text-align: left;
             }
 
-            #query-form, #query {
+            #query-form {
                 position: sticky;
                 background: var(--bg);
-            }
-            #query-form {
                 top: 0;
                 text-align: center;
             }
@@ -92,16 +90,9 @@ require 'config.php';
             #hints {
                 color: #888;
                 font-size: 90%;
-                margin-top: 10pt;
+                margin: 10pt 0 20pt;
                 display: inline-block;
                 width: var(--formWidth);
-            }
-
-            #query {
-                margin-top: 30pt;
-                padding-bottom: 10pt;
-                text-align: center;
-                top: 30pt;
             }
 
             #results .entry {
@@ -151,22 +142,21 @@ require 'config.php';
         <div>
             <div id="query-form">
                 <form method="GET" autocomplete="off">
-                    <input type="text" name="q" placeholder="Search TUBS people">
+		<input type="text" name="q" value="<?=$_GET['q']?>" placeholder="Search TUBS people">
                     <input type="submit" value="&#x1F50D;">
                 </form>
             </div>
             <div id="hints">
                 Examples:<br>
                 <code>
-                uid=maxmuste<br>
-                uid=y0012345<br>
-                cn=*unclear name part*<br>
-                givenname=first name<br>
-                sn=last name<br>
-                telephonenumber=*2109
+			uid=maxmuste<br>
+			uid=y0012345<br>
+			cn=*unclear name part*<br>
+			givenname=first name<br>
+			sn=last name<br>
+			telephonenumber=*2109
                 </code>
             </div>
-            <div id="query"><?=isset($_GET['q']) ? '"<b>' . $_GET['q'] . '</b>"' : ''?></div>
             <div id="results">
 <?php
 if (isset($_GET['q'])) {
