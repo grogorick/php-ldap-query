@@ -142,10 +142,15 @@ require 'config.php';
         <div>
             <div id="query-form">
                 <form method="GET" autocomplete="off">
-                    <input type="text" name="q" value="<?=$_GET['q']?>" placeholder="Search TUBS people">
+                    <input type="text" name="q" value="<?=$_GET['q'] ?? 'cn=**'?>" placeholder="Search TUBS people" autofocus>
                     <input type="submit" value="&#x1F50D;">
                 </form>
             </div>
+            <script>
+                let q = document.querySelector("input[name='q']"),
+                    pos = q.value.length<?=isset($_GET['q']) ? '' : ' - 1'?>;
+                q.setSelectionRange(pos, pos);
+            </script>
             <div id="hints">
                 Examples:<br>
                 <code>
